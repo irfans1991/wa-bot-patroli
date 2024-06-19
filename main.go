@@ -42,15 +42,15 @@ var (
 
 func main() {
 	ctx := context.Background()
-	var users []domain.Users
+	// var users []domain.Users
 	// koneksi database mysql
-	db := database.PostgresConnect(ctx)
+	// db := database.PostgresConnect(ctx)
 
-	if db == nil {
-		panic("error connect database")
-	}
+	// if db == nil {
+	// 	panic("error connect database")
+	// }
 
-	db.AutoMigrate(&users)
+	// db.AutoMigrate(&users)
 
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Make sure you add appropriate DB connector imports, e.g. github.com/mattn/go-sqlite3 for SQLite
@@ -93,7 +93,7 @@ func main() {
 		}
 	}
 
-	PollNewActivities(db)
+	// PollNewActivities(db)
 
 	// Listen to Ctrl+C (you can also do something else that prevents the program from exiting)
 	c := make(chan os.Signal, 1)
