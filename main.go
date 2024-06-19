@@ -114,14 +114,12 @@ func PollNewActivities(db *gorm.DB) {
 
 		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&Users)
 		timeNow := time.Now().Format("2006-01-02")
-		fmt.Println(timeNow)
 
 		for _, activity := range Users {
 
 			fmt.Printf("New activity detected: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
-			fmt.Println("tanggal databse : ", dates)
 			message = activity.Name
 			if message == "Jhins" && dates == timeNow {
 				fmt.Println(message)
