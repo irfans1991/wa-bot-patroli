@@ -26,7 +26,7 @@ func PostgresConnect(ctx context.Context) *gorm.DB {
 	dbName := os.Getenv("DB_NAME")
 
 	// Connection string
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai", dbHost, dbUser, dbPassword, dbName, dbPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Makassar", dbHost, dbUser, dbPassword, dbName, dbPort)
 
 	// Open connection to the database
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})

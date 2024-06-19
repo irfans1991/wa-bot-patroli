@@ -14,7 +14,8 @@ services:
       - 8013:8283
     restart: always
     networks:
-      - chenwoo
+      - my_bridge_network
 
 networks:
-  chenwoo:
+  my_bridge_network:
+    driver: bridge
