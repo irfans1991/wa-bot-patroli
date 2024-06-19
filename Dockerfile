@@ -14,4 +14,4 @@ WORKDIR /opt/patroli-bot
 
 COPY . .
 
-# ENTRYPOINT ["go", "run", "main.go"]
+ENTRYPOINT ["go", "run", "main.go"]
