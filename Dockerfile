@@ -8,7 +8,7 @@ RUN apk add --no-cache build-base sqlite
 
 ENV CGO_ENABLED=1
 
-WORKDIR /opt
+WORKDIR /opt/patroli-bot
 
 # RUN go mod download
 
