@@ -3,10 +3,10 @@ version: '3.8'
 services:
   # Patroli BOT
   patroli-bot:
-    image: beauty-bot:1.0.0
-    container_name: beauty-bot
+    image: patroli-bot:1.0.0
+    container_name: patroli-bot
     volumes:
-      - ./beauty-bot:/opt/beauty-bot
+      - ./patroli-bot:/opt
     build:
       context: ./
       dockerfile: ./Dockerfile
