@@ -1,0 +1,2 @@
+nama: irfan
+umur: 22
