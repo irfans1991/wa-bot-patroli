@@ -10,7 +10,7 @@ ENV CGO_ENABLED=1
 
 WORKDIR /opt/patroli-bot
 
-# RUN go mod download
+RUN go mod download
 
 COPY . .
 
