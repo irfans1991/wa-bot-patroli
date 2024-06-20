@@ -31,16 +31,31 @@ func SendMessages(ctx context.Context, client *whatsmeow.Client, message string)
 	if message == "" {
 		return fmt.Errorf("message is empty")
 	}
-	targetJID := types.JID{
-		User:   os.Getenv("NUMBER_PHONE"),
-		Server: "s.whatsapp.net",
+	targetJIDs := []types.JID{
+		{
+			User:   os.Getenv("NUMBER_PHONE_1"),
+			Server: "s.whatsapp.net",
+		},
+		{
+			User:   os.Getenv("NUMBER_PHONE_2"),
+			Server: "s.whatsapp.net",
+		},
 	}
-	_, err := client.SendMessage(ctx, targetJID, &proto.Message{
-		Conversation: &message,
-	})
-	if err != nil {
-		return err
+
+	for _, targetJID := range targetJIDs {
+		_, err := client.SendMessage(ctx, targetJID, &proto.Message{
+			Conversation: &message,
+		})
+		if err != nil {
+			return err
+		}
 	}
+	// _, err := client.SendMessage(ctx, targetJID, &proto.Message{
+	// 	Conversation: &message,
+	// })
+	// if err != nil {
+	// 	return err
+	// }
 
 	fmt.Printf("Message sent: %s\n", message)
 	return nil
