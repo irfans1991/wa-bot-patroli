@@ -3,14 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 	"whatsapp-bot/database"
 	"whatsapp-bot/domain"
-	"whatsapp-bot/handler"
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/mdp/qrterminal/v3"
@@ -42,7 +40,7 @@ var (
 
 func main() {
 	ctx := context.Background()
-	var users []domain.Users
+	var mutasi_masuks []domain.MutasiBarang
 	// koneksi database mysql
 	db := database.MariadbConnect(ctx)
 
@@ -50,7 +48,7 @@ func main() {
 		panic("error connect database")
 	}
 
-	db.AutoMigrate(&users)
+	db.AutoMigrate(&mutasi_masuks)
 
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Make sure you add appropriate DB connector imports, e.g. github.com/mattn/go-sqlite3 for SQLite
@@ -110,25 +108,47 @@ func PollNewActivities(db *gorm.DB) {
 	var message string
 
 	for {
-		var Users []domain.Users
+		var mutasi_masuks []domain.MutasiBarang
 
-		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&Users)
+		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&mutasi_masuks)
 		timeNow := time.Now().Format("2006-01-02")
 
-		for _, activity := range Users {
+		for _, activity := range mutasi_masuks {
 
 			fmt.Printf("New activity detected: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
-			message = activity.Name
-			if message == "Jhins" && dates == timeNow {
-				fmt.Println(message)
-				if err := handler.SendMessages(ctx, client, message); err != nil {
+			message = activity.Unit
 
-					log.Fatalf("Failed to send message: %v", err)
-				}
-
+			switch {
+			case message == "Boks" && dates == timeNow:
+				fmt.Println("ada barang boks masuk")
+			case message == "Colly" && dates == timeNow:
+				fmt.Println("ada barang colly masuk")
+			case message == "Galon" && dates == timeNow:
+				fmt.Println("ada barang galon masuk")
+			case message == "Botol" && dates == timeNow:
+				fmt.Println("ada barang botol masuk")
+			case message == "Roll" && dates == timeNow:
+				fmt.Println("ada barang roll masuk")
+			case message == "Tabung" && dates == timeNow:
+				fmt.Println("ada barang tabung masuk")
+			case message == "Pcs" && dates == timeNow:
+				fmt.Println("ada barang pcs masuk")
+			case message == "Pail" && dates == timeNow:
+				fmt.Println("ada barang pail masuk")
+			case message == "Liter" && dates == timeNow:
+				fmt.Println("ada barang liter masuk")
 			}
+
+			// if message == "Jhins" && dates == timeNow {
+			// 	fmt.Println(message)
+			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
+
+			// 		log.Fatalf("Failed to send message: %v", err)
+			// 	}
+
+			// }
 		}
 
 		// Sleep for a while before the next poll
