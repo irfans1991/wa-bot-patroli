@@ -1,6 +1,15 @@
 package database
 
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
 
+	"github.com/joho/godotenv"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
 func MariadbConnect(ctx context.Context) *gorm.DB {
 	// Load .env file
 	err := godotenv.Load()
