@@ -44,7 +44,7 @@ func main() {
 	ctx := context.Background()
 	var users []domain.Users
 	// koneksi database mysql
-	db := database.PostgresConnect(ctx)
+	db := database.MariadbConnect(ctx)
 
 	if db == nil {
 		panic("error connect database")
