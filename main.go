@@ -40,7 +40,7 @@ var (
 
 func main() {
 	ctx := context.Background()
-	var mutasi_masuks []domain.MutasiBarang
+	var mutasi_masuks []domain.Mutasi_masuks
 	// koneksi database mysql
 	db := database.MariadbConnect(ctx)
 
@@ -108,7 +108,7 @@ func PollNewActivities(db *gorm.DB) {
 	var message string
 
 	for {
-		var mutasi_masuks []domain.MutasiBarang
+		var mutasi_masuks []domain.Mutasi_masuks
 
 		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&mutasi_masuks)
 		timeNow := time.Now().Format("2006-01-02")

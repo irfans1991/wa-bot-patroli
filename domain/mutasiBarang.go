@@ -2,7 +2,7 @@ package domain
 
 import "time"
 
-type MutasiBarang struct {
+type Mutasi_masuks struct {
 	Id                     int `gorm:"primaryKey"`
 	SecurityName           string
 	TypeMutasi             string
