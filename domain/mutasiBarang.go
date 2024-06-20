@@ -6,7 +6,7 @@ type Mutasi_masuks struct {
 	Id                     int    `gorm:"primaryKey"`
 	Security               string `gorm:"size:255;not null"`
 	Type_Mutasi            string `gorm:"size:255;not null"`
-	SupplierName           string
+	Supplier_Name          string `gorm:"size:255;not null"`
 	From                   string
 	Supplier               string
 	PoliceNumber           string
