@@ -3,9 +3,9 @@ package domain
 import "time"
 
 type Mutasi_masuks struct {
-	Id                     int `gorm:"primaryKey"`
-	SecurityName           string
-	TypeMutasi             string
+	Id                     int    `gorm:"primaryKey"`
+	Security               string `gorm:"size:255;not null"`
+	Type_Mutasi            string `gorm:"size:255;not null"`
 	SupplierName           string
 	From                   string
 	Supplier               string
