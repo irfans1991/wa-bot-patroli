@@ -12,11 +12,11 @@ import (
 	"gorm.io/gorm"
 )
 
-var (
-	client *whatsmeow.Client
-)
+// var (
+// 	client *whatsmeow.Client
+// )
 
-func PollNewActivities(db *gorm.DB) {
+func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 	ctx = context.Background()
 	var lastCheckedID uint = 0
 	var message string

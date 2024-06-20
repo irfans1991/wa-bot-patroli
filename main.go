@@ -90,7 +90,7 @@ func main() {
 		}
 	}
 
-	usecase.PollNewActivities(db)
+	usecase.PollNewActivities(db, client)
 
 	// Listen to Ctrl+C (you can also do something else that prevents the program from exiting)
 	c := make(chan os.Signal, 1)
