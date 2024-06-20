@@ -124,47 +124,47 @@ func PollNewActivities(db *gorm.DB) {
 			Unit = activity.Unit
 
 			switch {
-			case Unit == "Boks" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Boks" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada barang %s Boks masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Colly" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Colly" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada barang %s Colly masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Galon" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Galon" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada Air %s Galon masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Botol" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Botol" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada %s Botol masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Roll" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Roll" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada Barang %s Roll masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Tabung" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Tabung" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada %s Tabung masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Pcs" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Pcs" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada Barang %s Pcs masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Pail" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Pail" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada %s pail masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			case Unit == "Liter" && dates == timeNow && activity.Type_Mutasi == "in":
+			case Unit == "Liter" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada %s Liter masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
