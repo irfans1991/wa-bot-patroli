@@ -8,7 +8,12 @@ import (
 	"whatsapp-bot/domain"
 	"whatsapp-bot/handler"
 
+	"go.mau.fi/whatsmeow"
 	"gorm.io/gorm"
+)
+
+var (
+	client *whatsmeow.Client
 )
 
 func PollNewActivities(db *gorm.DB) {
@@ -77,15 +82,6 @@ func PollNewActivities(db *gorm.DB) {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
 			}
-
-			// if message == "Jhins" && dates == timeNow {
-			// 	fmt.Println(message)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-
-			// 		log.Fatalf("Failed to send message: %v", err)
-			// 	}
-
-			// }
 		}
 
 		// Sleep for a while before the next poll
