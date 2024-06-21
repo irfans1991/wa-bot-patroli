@@ -34,7 +34,6 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
 			Unit = activity.Unit
-
 			switch {
 			case Unit == "Boks" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada barang %s Boks masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
@@ -78,6 +77,11 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 				}
 			case Unit == "Liter" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
 				message = fmt.Sprintf("Halo kak, ada %s Liter masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
+				if err := handler.SendMessages(ctx, client, message); err != nil {
+					log.Fatalf("Failed to send Unit: %v", err)
+				}
+			case activity.Type_Mutasi == "Keluar" && dates == timeNow:
+				message = fmt.Sprintf("Halo kak, ada aktifitas barang Keluar Berupa %s ukuran %s %s. untuk %s, silahkan hubungi security untuk informasi lebih lanjut, Terimakasih !", activity.Supplier, activity.TotalItems, activity.Unit, activity.From)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}

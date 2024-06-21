@@ -40,6 +40,10 @@ func SendMessages(ctx context.Context, client *whatsmeow.Client, message string)
 			User:   os.Getenv("NUMBER_PHONE_2"),
 			Server: "s.whatsapp.net",
 		},
+		{
+			User:   os.Getenv("NUMBER_PHONE_3"),
+			Server: "s.whatsapp.net",
+		},
 	}
 
 	for _, targetJID := range targetJIDs {
