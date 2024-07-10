@@ -41,50 +41,10 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
 			case activity.Type_Mutasi == "Keluar" && dates == timeNow:
-				message = fmt.Sprintf("Halo kak, ada aktifitas barang Keluar Berupa %s ukuran %s %s. untuk %s,\n silahkan hubungi security untuk informasi lebih lanjut, Terimakasih !", activity.Supplier, activity.TotalItems, activity.Unit, activity.From)
+				message = fmt.Sprintf("Halo kak, ada aktifitas barang Keluar, dengan informasi : *_%s_* , dari supplier %s ke %s, \n silahkan hubungi security untuk informasi lebih lanjut, Terimakasih !", activity.Remark, activity.Supplier_Name, activity.From)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			// case Unit == "Colly" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada barang %s Colly masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Galon" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada Air %s Galon masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Botol" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada %s Botol masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Roll" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada Barang %s Roll masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Tabung" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada %s Tabung masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Pcs" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada Barang %s Pcs masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Pail" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada %s pail masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
-			// case Unit == "Liter" && dates == timeNow && activity.Type_Mutasi == "Masuk Barang":
-			// 	message = fmt.Sprintf("Halo kak, ada %s Liter masuk di area perusahaan dari %s, diterima oleh Pak %s, silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Supplier_Name, activity.Security)
-			// 	if err := handler.SendMessages(ctx, client, message); err != nil {
-			// 		log.Fatalf("Failed to send Unit: %v", err)
-			// 	}
 			}
 		}
 
