@@ -40,6 +40,7 @@ var (
 func main() {
 	ctx := context.Background()
 	var mutasi_masuks []domain.Mutasi_masuks
+	var documents []domain.Documents
 	// koneksi database mysql
 	db := database.MariadbConnect(ctx)
 
@@ -49,6 +50,7 @@ func main() {
 
 	db.AutoMigrate(&mutasi_masuks)
 
+	load_doc := db.Find(&documents)
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Make sure you add appropriate DB connector imports, e.g. github.com/mattn/go-sqlite3 for SQLite
 	container, err := sqlstore.New("sqlite3", "file:myfirstbot.db?_foreign_keys=on", dbLog)
@@ -91,6 +93,7 @@ func main() {
 	}
 
 	usecase.PollNewActivities(db, client)
+	usecase.PollNewActivitiesDocuments(load_doc, client)
 
 	// Listen to Ctrl+C (you can also do something else that prevents the program from exiting)
 	c := make(chan os.Signal, 1)
