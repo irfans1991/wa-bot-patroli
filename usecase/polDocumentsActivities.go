@@ -26,7 +26,7 @@ func PollNewActivitiesDocuments(db *gorm.DB, client *whatsmeow.Client) {
 
 		for _, activity := range Documents {
 
-			fmt.Printf("New activity detected: %v\n", activity)
+			fmt.Printf("New activity Documents detected	: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
 			// Unit = activity.Unit

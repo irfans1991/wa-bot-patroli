@@ -30,13 +30,13 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 
 		for _, activity := range mutasi_masuks {
 
-			fmt.Printf("New activity detected: %v\n", activity)
+			// fmt.Printf("New activity detected: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
 			// Unit = activity.Unit
 			switch {
 			case activity.Type_Mutasi == "Masuk Barang" && dates == timeNow:
-				message = fmt.Sprintf("Halo kak, ada barang %s %s masuk di area perusahaan dari %s, %s, diterima oleh Pak %s,\n *_dengan informasi berikut : %s_*, \n silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Unit, activity.Supplier_Name, activity.From ,activity.Security, activity.Remark)
+				message = fmt.Sprintf("Halo kak, ada barang %s %s masuk di area perusahaan dari %s, %s, diterima oleh Pak %s,\n *_dengan informasi berikut : %s_*, \n silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Unit, activity.Supplier_Name, activity.From, activity.Security, activity.Remark)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
