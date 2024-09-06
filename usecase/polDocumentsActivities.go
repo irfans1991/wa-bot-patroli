@@ -19,12 +19,12 @@ func PollNewActivitiesDocuments(db *gorm.DB, client *whatsmeow.Client) {
 	// var Unit string
 
 	for {
-		var Documents []domain.Documents
+		var documents []domain.Documents
 
-		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&Documents)
+		db.Where("id > ?", lastCheckedID).Order("id asc").Find(&documents)
 		timeNow := time.Now().Format("2006-01-02")
 
-		for _, activity := range Documents {
+		for _, activity := range documents {
 
 			fmt.Printf("New activity Documents detected	: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
