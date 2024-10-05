@@ -14,6 +14,9 @@ import (
 
 func PollNewActivitiesDocuments(db *gorm.DB, client *whatsmeow.Client) {
 	ctx = context.Background()
+	var documents []domain.Documents
+
+	db.AutoMigrate(&documents)
 	var lastCheckedID uint = 0
 	var message string
 	// var Unit string

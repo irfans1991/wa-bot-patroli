@@ -7,7 +7,6 @@ import (
 	"os/signal"
 	"syscall"
 	"whatsapp-bot/database"
-	"whatsapp-bot/domain"
 	"whatsapp-bot/usecase"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -39,17 +38,12 @@ var (
 
 func main() {
 	ctx := context.Background()
-	var mutasi_masuks []domain.Mutasi_masuks
-	var documents []domain.Documents
 	// koneksi database mysql
 	db := database.MariadbConnect(ctx)
 
 	if db == nil {
 		panic("error connect database")
 	}
-
-	db.AutoMigrate(&mutasi_masuks)
-	db.AutoMigrate(&documents)
 
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Make sure you add appropriate DB connector imports, e.g. github.com/mattn/go-sqlite3 for SQLite
