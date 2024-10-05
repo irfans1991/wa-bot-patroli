@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 	"whatsapp-bot/database"
+	"whatsapp-bot/domain"
 	"whatsapp-bot/usecase"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -44,6 +45,10 @@ func main() {
 	if db == nil {
 		panic("error connect database")
 	}
+
+	var mutasi_masuks []domain.Mutasi_masuks
+
+	db.AutoMigrate(&mutasi_masuks)
 
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Make sure you add appropriate DB connector imports, e.g. github.com/mattn/go-sqlite3 for SQLite
@@ -87,7 +92,7 @@ func main() {
 	}
 
 	usecase.PollNewActivities(db, client)
-	usecase.PollNewActivitiesDocuments(db, client)
+	// usecase.PollNewActivitiesDocuments(db, client)
 
 	// Listen to Ctrl+C (you can also do something else that prevents the program from exiting)
 	c := make(chan os.Signal, 1)

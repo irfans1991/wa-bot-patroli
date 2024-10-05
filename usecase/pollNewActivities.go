@@ -19,7 +19,6 @@ import (
 func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 	ctx = context.Background()
 
-	db.AutoMigrate(&mutasi_masuks)
 	var lastCheckedID uint = 0
 	var message string
 	// var Unit string
