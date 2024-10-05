@@ -14,8 +14,8 @@ services:
       - 8013:8283
     restart: always
     networks:
-      - my_bridge_network
+      - laravel_docker-networks
 
 networks:
-  my_bridge_network:
+  laravel_docker-networks:
     driver: bridge
