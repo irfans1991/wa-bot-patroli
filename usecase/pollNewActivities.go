@@ -29,7 +29,6 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 		timeNow := time.Now().Format("2006-01-02")
 
 		for _, activity := range mutasi_masuks {
-			activity.Supplier
 			fmt.Printf("New activity detected: %v\n", activity)
 			lastCheckedID = uint(activity.Id)
 			dates := activity.Created_at.Format("2006-01-02")
