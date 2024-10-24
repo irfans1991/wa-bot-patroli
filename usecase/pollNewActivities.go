@@ -29,10 +29,9 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 		timeNow := time.Now().Format("2006-01-02")
 
 		for _, activity := range mutasi_masuks {
+			lastCheckedID = uint(activity.Id)
+			dates := activity.Created_at.Format("2006-01-02")
 			switch {
-
-				lastCheckedID = uint(activity.Id)
-				dates := activity.Created_at.Format("2006-01-02")
 			// manado activity
 			case activity.Supplier == "IKAN" && dates == timeNow:
 				message = fmt.Sprintf("Halo kak, ada Ikan masuk di area perusahaan dari supplier %s, dengan total items %s, diterima oleh Pak %s,\n *_dengan informasi berikut : %s_*, \n silahkan hubungi security, Terimakasih !", activity.Supplier_Name, activity.Unit, activity.Security, activity.Remark)
