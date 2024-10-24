@@ -45,7 +45,7 @@ func PollNewActivities(db *gorm.DB, client *whatsmeow.Client) {
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
 				}
-			default:
+			case activity.Supplier != "IKAN" && dates == timeNow:
 				message = fmt.Sprintf("Halo kak, ada barang %s %s masuk di area perusahaan dari %s, %s, diterima oleh Pak %s,\n *_dengan informasi berikut : %s_*, \n silahkan hubungi security, Terimakasih !", activity.TotalItems, activity.Unit, activity.Supplier_Name, activity.From, activity.Security, activity.Remark)
 				if err := handler.SendMessages(ctx, client, message); err != nil {
 					log.Fatalf("Failed to send Unit: %v", err)
