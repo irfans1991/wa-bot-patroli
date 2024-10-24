@@ -8,7 +8,7 @@ type Mutasi_masuks struct {
 	Type_Mutasi            string `gorm:"size:255;not null"`
 	Supplier_Name          string `gorm:"size:255;not null"`
 	From                   string
-	Supplier               string `gorm:"size:255;not null"`
+	Supplier               string
 	PoliceNumber           string
 	TotalItems             string
 	Unit                   string
